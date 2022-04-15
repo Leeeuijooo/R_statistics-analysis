@@ -8,3 +8,6 @@ R을 이용한 통계 분석 (논문작성을 위한툴)
 
 2. R프로그래밍 실습 : http://bigdata.dongguk.ac.kr/lectures/R/_book/index.html 
 
+## 생명과학 빅데이터 분석
+
+1. https://faculty.ucr.edu/~tgirke/Documents/R_BioCond/documentation/Krijnen-IntroBioInfStatistics.pdf
