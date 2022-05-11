@@ -1,0 +1,32 @@
+1. 성별 - SEX
+2. 학년 - GRADE
+[BC - Before Covid-19] [CP - Covid-19 Pandemic]
+3. 코로나 이전 월평균 수입 - BC_MAI (Monthly Average Income)
+4. 코로나 팬데믹 월평균 수입 - CP_MAI 
+5. 코로나 이전 수입원 - BC_SOI (Source Of Income)
+6. 코로나 팬데믹 수입원 - CP_SOI
+7. 코로나 이전 평균 지출 비용 - BC_MAE (Monthly Average Expenditure)
+8. 코로나 팬데믹 평균 지출 비용 - CP_MAE
+9. 코로나 이전 음주 빈도 - BC_DF (Drink Frequency)
+10. 코로나 팬데믹 음주 빈도 - CP_DF
+11. 코로나 이전 월평균 의복 지출 개수 - BC_MACE (Monthly Average Clothing Expenditure)
+12. 코로나 팬데믹 월평균 의복 지출 개수 - CP_MACE
+13. 코로나 이전 장바구니 물품 개수 - BC_SCI (Shopping Cart Items)
+14. 코로나 팬데믹 장바구니 물품 개수 - CP_SCI
+15. 코로나 이전 월평균 보건 비용 - BC_HE (Health Expenditure)
+16. 코로나 팬데믹 월평균 보건 비용 - CP_HE
+17. 코로나 이전 월평균 대중교통 비용 - BC_MAPTC (Monthly Average Public Transport Cost)
+18. 코로나 팬데믹 월평균 대중교통 비용 - CP_MAPTC
+19. 코로나 이전 식사해결 방법 - BC_MM (Method of Meal)
+20. 코로나 팬데믹 식사해결 방법 - CP_MM
+21. 코로나 이전 자기계발 지출 영역 - BC_PD (Personal Development)
+22. 코로나 팬데믹 자기계발 지출 영역 - CP_PD
+23. 코로나 이전 월평균 통신 비용 - BC_MPC (Mobile Phone Cost)
+24. 코로나 팬데믹 월평균 통신 비용 - CP_MPC
+25. 코로나 이전 주거형태 - BC_HT (Housing Type)
+26. 코로나 팬데믹 주거형태 - CP_HT
+27. 코로나 이전 문화레저 영역 - BC_CLA (Cultural, Leisure Area)
+28. 코로나 팬데믹 문화레저 영역 - CP_CLA
+29. 코로나 이전 OTT 서비스 구독 - BC_OSS (OTT Service Subscription)
+30. 코로나 팬데믹 OTT 서비스 구독 - CP_OSS
+31. 코로나가 소비행태에 미친 영향도 - IOCB (Impact On Consumption Behavior)
