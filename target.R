@@ -6,11 +6,11 @@ library(plyr)
 ##변수명 간단하게 정리 
 names(target) = c("SEX", "GRADE","BC_MAI","CP_MAI" ,"BC_SOI","CP_SOI","BC_MAE","CP_MAE","BC_DF","CP_DF","BC_MACE","CP_MACE","BC_SCI","CP_SCI","BC_HE","CP_HE","BC_MAPTC","CP_MAPTC","BC_MM","CP_MM","BC_PD","CP_PD","BC_MPC","CP_MPC","BC_HT","CP_HT","BC_CLA","CP_CLA","BC_OSS","CP_OSS","IOCB")
 dim(target)
+summary(target)
 ##ggplot package 설치
 install.packages("ggplot2")
 library(ggplot2)
-ggplot(target, aes(x=CP_MAI,y=GRADE)) + geom_point() ##포인트 테스트
-table(target$GRADE, target$SEX,target$CP_MAI)
+par(family = "AppleGothic")
 summary(target)
 
 ### 변수들 범주형 변수로 직접 변환 
@@ -34,8 +34,7 @@ summary(target) ##살펴보는 목적으로
 count(target)
 target$CP_MAI ##변수 살펴보기
 table(target$BC_MAI)
-prop.table(table(target$BC_MAI))
-prop.table(table(target$BC_MAI))*100
+
 ##매우 간단한 파이차트
 pie(table(target$BC_MAI), col=rainbow(5),
         main="코로나 이전 월평균 수입",
