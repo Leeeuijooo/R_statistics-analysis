@@ -35,24 +35,76 @@ count(target)
 target$CP_MAI ##변수 살펴보기
 table(target$BC_MAI)
 
-##매우 간단한 파이차트
-pie(table(target$BC_MAI), col=rainbow(5),
-        main="코로나 이전 월평균 수입",
-        ylab = "(명)",)
+
+#바플롯
+##SEX
 color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-##바플롯
-barplot(sort(table(target$BC_MAI),
+barplot(sort(table(target$SEX),
              decreasing = TRUE),
         col = color.palette,
         main = "코로나 이전 월평균 수입")
-        
+#BC_MAI
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_MAI),
+             decreasing = TRUE),
+        col = color.palette,
+        ylab = "Freqeuency",
+        xlab = "(만원)",
+        ylim = c(0,50),
+        main = "코로나 이전 월평균 수입")
+
+##CP_MAI
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_MAI),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 월평균 수입")
+## ---신기한 결과--- 
+
+
+
 ##파이차트
+##성별
+
+
+
+
+##코로나 이전
 pie(sort(table(target$BC_MAI),
          decreasing = TRUE),
     radius = 1,
     main = "코로나 이전 월평균 수입")
-##change xhi - > fisher
-tti<-xtabs(~ GRADE + BC_MAI, data = target)
-tti
-result<- fisher.test(tti,Finaltable,simulate.p.value = TRUE, B=1e7)
-result
+ ##change xhi - > fisher
+tti1<-xtabs(~ GRADE + BC_MAI, data = target)
+tti1
+result1<- fisher.test(tti1,Finaltable,simulate.p.value = TRUE)
+result1
+##par(mfrow=c(1,1))
+
+tti2<-xtabs(~ BC_MAI + CP_MAI, data = target)
+tti2
+result2<- fisher.test(tti2,Finaltable,simulate.p.value = TRUE)
+result2
+tti3<-xtabs(~ BC_MAI + CP_MAI, data = target)
+tti3
+result3<- fisher.test(tti3,Finaltable,simulate.p.value = TRUE)
+result3
+tti4<-xtabs(~ BC_SOI + CP_SOI, data = target)
+tti4
+result4<- fisher.test(tti4,Finaltable,simulate.p.value = TRUE)
+result4
+
+
+
+
+##cross tab SPSS version
+x<-target$BC_MAI
+y<-target$CP_MAI
+x;y
+Result<-data.frame(BC_MAI=x,CP_MAI=y )
+dim(Result)
+table(Result)
+install.packages("gmodels")
+library(gmodels)
+CrossTable(x,y)
+CrossTable(x,y, chisq = TRUE, expected = TRUE, fisher = TRUE, format = c("SPSS"))
