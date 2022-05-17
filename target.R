@@ -10,7 +10,7 @@ summary(target)
 ##ggplot package 설치
 install.packages("ggplot2")
 library(ggplot2)
-par(family = "AppleGothic")
+par(family = "AppleGothic") ##mac os 필수
 summary(target)
 
 ### 변수들 범주형 변수로 직접 변환 
@@ -35,14 +35,20 @@ count(target)
 target$CP_MAI ##변수 살펴보기
 table(target$BC_MAI)
 
-
 #바플롯
 ##SEX
 color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
 barplot(sort(table(target$SEX),
              decreasing = TRUE),
         col = color.palette,
-        main = "코로나 이전 월평균 수입")
+        main = "성별")
+
+##GRADE
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$GRADE),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "학년")
 #BC_MAI
 color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
 barplot(sort(table(target$BC_MAI),
@@ -59,7 +65,66 @@ barplot(sort(table(target$CP_MAI),
              decreasing = TRUE),
         col = color.palette,
         main = "코로나 팬데믹 월평균 수입")
-## ---신기한 결과--- 
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_SOI),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 이전 수입원")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_SOI),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 수입원")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_MAE),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나이전 지출비용")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_MAE),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 지출비용")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_DF),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나이전 음주빈도")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_DF),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 음주빈도")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_MACE),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나이전 월평균 의복지출")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_MACE),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 월평균 의복지출")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$BC_SCI),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나이전 장바구니 물품")
+
+color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
+barplot(sort(table(target$CP_SCI),
+             decreasing = TRUE),
+        col = color.palette,
+        main = "코로나 팬데믹 장바구니 물품")
 
 
 
@@ -74,6 +139,8 @@ pie(sort(table(target$BC_MAI),
          decreasing = TRUE),
     radius = 1,
     main = "코로나 이전 월평균 수입")
+
+
  ##change xhi - > fisher
 tti1<-xtabs(~ GRADE + BC_MAI, data = target)
 tti1
@@ -93,8 +160,14 @@ tti4<-xtabs(~ BC_SOI + CP_SOI, data = target)
 tti4
 result4<- fisher.test(tti4,Finaltable,simulate.p.value = TRUE)
 result4
-
-
+tti5<-xtabs(~ BC_MAI + BC_SOI, data = target)
+tti5
+result5<- fisher.test(tti5,Finaltable,simulate.p.value = TRUE)
+result5
+tti6<-xtabs(~ CP_MAI + CP_SOI, data = target)
+tti6
+result6<- fisher.test(tti6,Finaltable,simulate.p.value = TRUE)
+result6
 
 
 ##cross tab SPSS version
