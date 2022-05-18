@@ -266,23 +266,6 @@ tti8
 result8<- fisher.test(tti8,Finaltable,simulate.p.value = TRUE)
 result8
 
-tti9<-xtabs(~ BC_MACE + CP_MACE, data = target)
-tti9
-result9<- fisher.test(tti9,Finaltable,simulate.p.value = TRUE)
-result9
-tti10<-xtabs(~ BC_SCI + CP_SCI, data = target)
-tti10
-result10<- fisher.test(tti10,Finaltable,simulate.p.value = TRUE)
-result10
-tti8<-xtabs(~ BC_DF + CP_DF, data = target)
-tti8
-result8<- fisher.test(tti8,Finaltable,simulate.p.value = TRUE)
-result8
-tti8<-xtabs(~ BC_DF + CP_DF, data = target)
-tti8
-result8<- fisher.test(tti8,Finaltable,simulate.p.value = TRUE)
-result8
-
 ##범주형 데이터로 변환하는 코드
 target$SEX <-ifelse(target$SEX=='남',1,
                     ifelse(target$SEX=='여',0,as.integer())) #SEX 변수 숫자형으로 변환
@@ -305,17 +288,6 @@ target$BC_MAI <- ifelse(target$BC_MAI == "0 이상 20  미만",1,
 target$BC_MAI <- factor(target$BC_MAI, ordered = F)
 result <- aov(CP_MAI ~ BC_MAI, data = target)
 result
-##리커트 패키지 설치
-install.packages('likert')
-install.packages('reshape')
-library(likert)
-library(reshape)
-
-
-
-
-
-
 
 ##cross tab SPSS version
 x<-target$BC_MAI
