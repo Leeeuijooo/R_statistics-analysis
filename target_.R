@@ -10,232 +10,118 @@ summary(target_)
 ##ggplot package 설치
 install.packages("ggplot2")
 library(ggplot2)
-par(family = "AppleGothic") ##mac os 버전
+par(family = "AppleGothic") ##mac os 필수
 
 summary(target_) ##살펴보는 목적으로
 count(target_)
 target_$CP_MAI ##변수 살펴보기
+##pie chart 이거로
+par(mfrow = c(1, 1)) ## 그래프 나누는 함수
+
+par(family = "AppleGothic")
+table(target_$SEX)
+freq_SEX<-xtabs(~SEX, data = target_);
+freq_SEX
+SEXLabels <- paste0(names(freq_SEX), " ", round(proportions(freq_SEX) * 100, digits=2),"%")
+pie(freq_SEX, label = SEXLabels, main = "성별")
+
+par(family = "AppleGothic")
+table(target_$GRADE)
+freq_GRADE<-xtabs(~GRADE, data = target_);
+freq_GRADE
+GRADELabels <- paste0(names(freq_GRADE), "학년  ", round(proportions(freq_GRADE) * 100, digits=2),"%")
+pie(freq_GRADE, label = GRADELabels, main = "학년")
+
+
+par(family = "AppleGothic")
 table(target_$BC_MAI)
-#바플롯
+freq_BC_MAI<-xtabs(~BC_MAI, data = target_);
+freq_BC_MAI
+BC_MAILabels <- paste0(names(freq_BC_MAI), " ", round(proportions(freq_BC_MAI) * 100, digits=2),"%")
+pie(freq_BC_MAI, label = BC_MAILabels, main = "코로나 이전 월평균 수입")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$SEX),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "성별")
+par(family = "AppleGothic")
+table(target_$CP_MAI)
+freq_CP_MAI<-xtabs(~CP_MAI, data = target_);
+freq_CP_MAI
+CP_MAILabels <- paste0(names(freq_CP_MAI), " ", round(proportions(freq_CP_MAI) * 100, digits=2),"%")
+pie(freq_CP_MAI, label = CP_MAILabels, main = "코로나 팬데믹 월평균 수입")
 
+table(target_$BC_SOI)
+freq_BC_SOI<-xtabs(~BC_SOI, data = target_);
+freq_BC_SOI
+BC_SOILabels <- paste0(names(freq_BC_SOI), " ", round(proportions(freq_BC_SOI) * 100, digits=2),"%")
+pie(freq_BC_SOI, label = BC_SOILabels, main = "코로나 이전 수입원")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$GRADE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "학년")
+table(target_$CP_SOI)
+freq_CP_SOI<-xtabs(~CP_SOI, data = target_);
+freq_CP_SOI
+CP_SOILabels <- paste0(names(freq_CP_SOI), " ", round(proportions(freq_CP_SOI) * 100, digits=2),"%")
+pie(freq_CP_SOI, label = CP_SOILabels, main = "코로나 팬데믹 수입원")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_MAI),
-             decreasing = TRUE),
-        col = color.palette,
-        ylab = "Freqeuency",
-        ylim = c(0,50),
-        main = "코로나 이전 월평균 수입")
+table(target_$BC_MAE)
+freq_BC_MAE<-xtabs(~BC_MAE, data = target_);
+freq_BC_MAE
+BC_MAELabels <- paste0(names(freq_BC_MAE), " ", round(proportions(freq_BC_MAE) * 100, digits=2),"%")
+pie(freq_BC_MAE, label = BC_MAELabels, main = "코로나 이전 평균 지출 비용")
 
+table(target_$CP_MAE)
+freq_CP_MAE<-xtabs(~CP_MAE, data = target_);
+freq_CP_MAE
+CP_MAELabels <- paste0(names(freq_CP_MAE), " ", round(proportions(freq_CP_MAE) * 100, digits=2),"%")
+pie(freq_CP_MAE, label = CP_MAELabels, main = "코로나 팬데믹 평균 지출 비용")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MAI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 월평균 수입")
+table(target_$BC_DF)
+freq_BC_DF<-xtabs(~BC_DF, data = target_);
+freq_BC_DF
+BC_DFLabels <- paste0(names(freq_BC_DF), " ", round(proportions(freq_BC_DF) * 100, digits=2),"%")
+pie(freq_BC_DF, label = BC_DFLabels, main = "코로나 이전 음주 빈도")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_SOI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 수입원")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_SOI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 수입원")
+table(target_$CP_DF)
+freq_CP_DF<-xtabs(~CP_DF, data = target_);
+freq_CP_DF
+CP_DFLabels <- paste0(names(freq_CP_DF), " ", round(proportions(freq_CP_DF) * 100, digits=2),"%")
+pie(freq_CP_DF, label = CP_DFLabels, main = "코로나 팬데믹 음주 빈도")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_MAE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 지출비용")
+table(target_$BC_MACE)
+freq_BC_MACE<-xtabs(~BC_MACE, data = target_);
+freq_BC_MACE
+BC_MACELabels <- paste0(names(freq_BC_MACE), " ", round(proportions(freq_BC_MACE) * 100, digits=2),"%")
+pie(freq_BC_MACE, label = BC_MACELabels, main = "코로나 이전 월평균 의복 지출 개수")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MAE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 지출비용")
+table(target_$CP_MACE)
+freq_CP_MACE<-xtabs(~CP_MACE, data = target_);
+freq_CP_MACE
+CP_MACELabels <- paste0(names(freq_CP_MACE), " ", round(proportions(freq_CP_MACE) * 100, digits=2),"%")
+pie(freq_CP_MACE, label = CP_MACELabels, main = "코로나 팬데믹 월평균 의복 지출 개수")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_DF),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 음주빈도")
+table(target_$BC_SCI)
+freq_BC_SCI<-xtabs(~BC_SCI, data = target_);
+freq_BC_SCI
+BC_SCILabels <- paste0(names(freq_BC_SCI), " ", round(proportions(freq_BC_SCI) * 100, digits=2),"%")
+pie(freq_BC_SCI, label = BC_SCILabels, main = "코로나 이전 장바구니 물품 개수")
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_DF),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 음주빈도")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_MACE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 월평균 의복지출")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MACE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 월평균 의복지출")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_SCI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 장바구니 물품")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_SCI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 장바구니 물품")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_SCI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 장바구니 물품")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_SCI),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 장바구니 물품")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_HE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 월평균 보건비용")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_HE),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 월평균 보건비용")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_MAPTC),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 월평균 대중교통비용")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MAPTC),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 월평균 대중교통비용")
+table(target_$CP_SCI)
+freq_CP_SCI<-xtabs(~CP_SCI, data = target_);
+freq_CP_SCI
+CP_SCILabels <- paste0(names(freq_CP_SCI), " ", round(proportions(freq_CP_SCI) * 100, digits=2),"%")
+pie(freq_CP_SCI, label = CP_SCILabels, main = "코로나 팬데믹 장바구니 물품 개수")
 
 
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_MM),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나이전 식사해결 방법")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MM),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 식사해결 방법")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$BC_PD),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 자기계발 지출 영역")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_PD),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 자기계발 지출 영역")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$ BC_MPC),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 월평균 통신 비용")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_MPC),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 월평균 통신 비용")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$ BC_HT),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 주거형태")
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_HT),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 주거형태")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$ BC_CLA),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 문화레저 영역")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_CLA),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 문화레저 영역")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$ BC_OSS),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 이전 OTT 서비스 구독")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$CP_OSS),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나 팬데믹 OTT 서비스 구독")
-
-color.palette <- RColorBrewer::brewer.pal(n=5, name= 'BuGn') #컬러 파레트
-barplot(sort(table(target_$IOCB),
-             decreasing = TRUE),
-        col = color.palette,
-        main = "코로나가 소비행태에 미친 영향도")
 ##-----------------------------------------------
-##수정필요
-ggplot(target_, aes(x = BC_MAI, fill = GRADE)) + geom_bar(position = "dodge")
 
-##파이차트##
-##성별##
 
-##코로나 이전
-pie(sort(table(target_$BC_MAI),
-         decreasing = TRUE),
-    radius = 1,
-    main = "코로나 이전 월평균 수입")
+
 
 ##-----------------------------------------------
 ##change xhi - > fisher 카이제곱 검정
-tti1<-xtabs(~ GRADE + BC_MAI, data = target_)
+tti1<-xtabs(~ BC_MAI + SEX, data = target_)
 tti1
 result1<- fisher.test(tti1,Finaltable,simulate.p.value = TRUE)
 result1
 ##par(mfrow=c(1,1))
 
-tti2<-xtabs(~ BC_MAI + CP_MAI, data = target_)
+tti2<-xtabs(~ BC_MAI + GRADE, data = target_)
 tti2
 result2<- fisher.test(tti2,Finaltable,simulate.p.value = TRUE)
 result2
@@ -265,6 +151,21 @@ tti8
 result8<- fisher.test(tti8,Finaltable,simulate.p.value = TRUE)
 result8
 
+tti9<-xtabs(~ BC_MACE + CP_MACE, data = target_)
+tti9
+result9<- fisher.test(tti9,Finaltable,simulate.p.value = TRUE)
+result9
+tti10<-xtabs(~ BC_SCI + CP_SCI, data = target_)
+tti10
+result10<- fisher.test(tti10,Finaltable,simulate.p.value = TRUE)
+result10
+tti11<-xtabs(~ BC_HE + CP_DF, data = target_)
+tti11
+result11<- fisher.test(tti11,Finaltable,simulate.p.value = TRUE)
+result11
+
+
+
 ##범주형 데이터로 변환하는 코드
 target_$SEX <-ifelse(target_$SEX=='남',1,
                     ifelse(target_$SEX=='여',0,as.integer())) #SEX 변수 숫자형으로 변환
@@ -281,16 +182,64 @@ target_$BC_MAI <- ifelse(target_$BC_MAI == "0 이상 20  미만",1,
                                       ifelse(target_$BC_MAI=="60 이상 80 미만",4,
                                              ifelse(target_$BC_MAI=="80 이상",5,as.numeric())))))
 
-#shapiro.test
 
+##등분산성 검정
+install.packages("lawstat")
+library(lawstat)
+levene.test(target_$BC_MAI, target_$CP_MAI)
+levene.test(target_$BC_MAE,target_$CP_MAE)
+levene.test(target_$BC_DF,target_$CP_DF)
+levene.test(target_$CP_DF,target_$GRADE)
 
+##t-test
+shapiro.test(target_$BC_DF)
+shapiro.test(target_$CP_DF)
+shapiro.test(target_$BC_MAI)
+shapiro.test(target_$CP_MAI)
+shapiro.test(target_$BC_MAE)
+shapiro.test(target_$CP_MAE)
+shapiro.test(target_$BC_MACE)
+shapiro.test(target_$CP_MACE)
+shapiro.test(target_$BC_SCI)
+shapiro.test(target_$CP_SCI)
+shapiro.test(target_$CP_MACE)
+shapiro.test(target_$CP_MACE)
 
+##등분산성 검정
+var.test(target_$BC_DF,target_$CP_DF) 
+##대응표본 t 검정
+t.test(target_$BC_OSS,target_$CP_OSS, paired = T)
 
 ##ANOVA
 target_$BC_MAI <- factor(target_$BC_MAI, ordered = F)
 result <- aov(CP_MAI ~ BC_MAI, data = target_)
 result
 summary(result)
+
+##ANOVA
+aov(BC_MAI~GRADE, target_)
+summary(aov(BC_MAI~GRADE, target_))
+
+target_$GRADE <- factor(target_$GRADE, ordered = F)
+result <- aov(CP_MAE ~ GRADE, data = target_)
+result
+anova(result)
+TukeyHSD(result)
+shapiro.test(result$residuals)
+bartlett.test(CP_MAE ~ GRADE, data = target_)
+plot(result, which=1:3)
+##이원분류 분산분석
+result_BC <- aov(BC_MAI ~ GRADE, data = target_)
+anova(result_supp)
+
+result_CP <- aov(CP_MAI ~ GRADE, data = target_)
+anova(result_supp)
+
+result_both <- aov(BC_MAI ~ GRADE *CP_MAI, data = target_)
+anova(result_both)
+
+
+
 
 ##cross tab SPSS version
 x<-target_$BC_MAI
